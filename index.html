@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario Judith</title>
+  <link rel="stylesheet" href="estilo.css" </head>
+
+<body>
+  <h1>Formulario</h1>
+  <form action="codigo.php" method="POST">
+
+    <fieldset <legend> <strong>Datos Personales</strong></legend>
+      <br><br>
+      <label> Nombre : </label>
+      <input type="text" placeholder="Nombre Completo" maxlength="20" required> <br> <br>
+      <label> Apellido : </label>
+      <input type="text" placeholder="Apellido" maxlength="20" required> <br> <br>
+      <label> Edad : </label>
+      <input type="number" min="1" max="120" required> <br> <br>
+      <label> Email :</label>
+      <input type="email" placeholder="info@gmail.com" required> <br><br>
+      <label>Nacionalidad :</label>
+      <select>
+        <option value="Argentina"> Argentina </option>
+        <option value="Brasilera"> Brasilera </option>
+        <option value="Chilena"> Chilena </option>
+      </select> <br> <br>
+      <fieldset>
+        <legend> Genero </legend>
+        <label><input type="radio" name="genero" value="Femenino"> Femenino </label>
+        <label><input type="radio" name="genero" value="Masculino"> Masculino </label>
+        <label><input type="radio" name="genero" value="Otro"> Otro </label>
+      </fieldset> <br><br>
+    
+      <fieldset>
+        <legend>Domicilio</legend>
+        <label for="provincia">Provincia:</label>
+        <select id="provincia" name="provincia">
+          <option value="">Selecciona una provincia</option>
+          <option value="Buenos Aires">Buenos Aires</option>
+          <option value="Catamarca">Catamarca</option>
+          <option value="Chaco">Chaco</option>
+          <option value="Chubut">Chubut</option>
+          <option value="Córdoba">Córdoba</option>
+          <option value="Corrientes">Corrientes</option>
+          <option value="Entre Ríos">Entre Ríos</option>
+          <option value="Formosa">Formosa</option>
+          <option value="Jujuy">Jujuy</option>
+          <option value="La Pampa">La Pampa</option>
+          <option value="La Rioja">La Rioja</option>
+          <option value="Mendoza">Mendoza</option>
+          <option value="Misiones">Misiones</option>
+          <option value="Neuquén">Neuquén</option>
+          <option value="Río Negro">Río Negro</option>
+          <option value="Salta">Salta</option>
+          <option value="San Juan">San Juan</option>
+          <option value="San Luis">San Luis</option>
+          <option value="Santa Cruz">Santa Cruz</option>
+          <option value="Santa Fe">Santa Fe</option>
+          <option value="Santiago del Estero">Santiago del Estero</option>
+          <option value="Tierra del Fuego">Tierra del Fuego</option>
+          <option value="Tucumán">Tucumán</option>
+        </select>
+        <br><br>
+        <label for="localidad">Localidad:</label>
+        <select id="localidad" name="localidad">
+          <option value="">Selecciona una localidad</option>
+        </select>
+
+        <script>
+          const localidades = {
+            "Buenos Aires": ["La Plata", "Mar del Plata", "Bahía Blanca", "Tandil"],
+            "Catamarca": ["San Fernando del Valle de Catamarca", "Andalgalá", "Belén", "Santa María"],
+            "Chaco": ["Resistencia", "Barranqueras", "Fontana", "Villa Ángela"],
+            "Chubut": ["Rawson", "Comodoro Rivadavia", "Puerto Madryn", "Trelew"],
+            "Córdoba": ["Córdoba", "Villa Carlos Paz", "Río Cuarto", "Alta Gracia"],
+            "Corrientes": ["Corrientes", "Goya", "Esquina", "Ituzaingó"],
+            "Entre Ríos": ["Paraná", "Concordia", "Gualeguaychú", "Victoria"],
+            "Formosa": ["Formosa", "Clorinda", "Pirané", "Las Lomitas"],
+            "Jujuy": ["San Salvador de Jujuy", "Palpalá", "Libertador General San Martín", "Humahuaca"],
+            "La Pampa": ["Santa Rosa", "General Pico", "Toay", "Realicó"],
+            "La Rioja": ["La Rioja", "Chilecito", "Aimogasta", "Chepes"],
+            "Mendoza": ["Mendoza", "San Rafael", "Malargüe", "Tunuyán"],
+            "Misiones": ["Posadas", "Puerto Iguazú", "Eldorado", "Oberá"],
+            "Neuquén": ["Neuquén", "San Martín de los Andes", "Zapala", "Cutral Có"],
+            "Río Negro": ["Viedma", "Bariloche", "General Roca", "Cipolletti"],
+            "Salta": ["Salta", "Orán", "Tartagal", "Cafayate"],
+            "San Juan": ["San Juan", "Rawson", "Chimbas", "Santa Lucía"],
+            "San Luis": ["San Luis", "Villa Mercedes", "Merlo", "La Toma"],
+            "Santa Cruz": ["Río Gallegos", "Puerto Deseado", "Caleta Olivia", "El Calafate"],
+            "Santa Fe": ["Santa Fe de la Vera Cruz", "Rosario", "Venado Tuerto", "Rafaela"],
+            "Santiago del Estero": ["Santiago del Estero", "La Banda", "Termas de Río Hondo", "Fernández"],
+            "Tierra del Fuego": ["Ushuaia", "Río Grande", "Tolhuin"],
+            "Tucumán": ["San Miguel de Tucumán", "Tafí Viejo", "Aguilares"]
+          };
+
+          const provincia = document.getElementById("provincia");
+          const localidad = document.getElementById("localidad");
+
+          provincia.addEventListener("change", () => {
+            const selectedProvincia = provincia.value;
+            localidad.innerHTML = "<option value=''>Selecciona una localidad</option>";
+            if (selectedProvincia !== "") {
+              for (let i = 0; i < localidades[selectedProvincia].length; i++) {
+                const option = document.createElement("option");
+                option.text = localidades[selectedProvincia][i];
+                option.value = localidades[selectedProvincia][i];
+                localidad.appendChild(option);
+              }
+            }
+          });
+        </script>
+
+
+        <br><br>
+        <label> Calle : </label>
+        <input type="text" placeholder="Nombre Calle" maxlength="20"> <br> <br>
+        <label> Numero : </label>
+        <input type="number" min="1" max="10000" required> <br> <br>
+        <label> Piso : </label>
+        <input type="number" min="1" max="120" required> <br> <br>
+        <label> Dpto : </label>
+        <input type="number" min="1" max="120" required> <br> <br>
+        <label for="codigo-postal">Código Postal:</label>
+        <input type="text" id="codigo-postal" name="codigo-postal" pattern="[0-9]{5}" required>
+
+      </fieldset>
+    </fieldset>
+    <br>
+    <!-- <button>Enviar</button> -->
+
+    <button type="submit" class="boton-enviar" >Enviar</button>
+
+  </form>
+</body>
+
+</html>

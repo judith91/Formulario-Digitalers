@@ -1,0 +1,32 @@
+html body {
+    height: 100% !important;
+    background-color: rgb(238, 197, 236);
+}
+h1{
+    text-align: center;
+}
+form{ background-color: rgb(237, 229, 179);
+padding: 10 px;
+width: 400px;
+margin: auto;
+}
+
+fieldset{ border: 2px solid;
+}
+
+.boton-enviar{
+display: block;
+margin-left: auto;
+margin-right: auto;
+border: none;
+cursor: pointer;
+width: 100px;
+height: 30px;
+}
+
+.boton-enviar:hover{
+color:rgb(33, 19, 232);
+
+}
+
+
